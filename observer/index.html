@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Observer</title>
+
+  <style>
+    .square {
+      width: 100px;
+      height: 100px;
+      background-color: #000;
+      color: #000;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="square" id="elementSquare">
+
+  </div>
+
+  <hr />
+
+  <button id="" onClick="model.increment()">Increment</button>
+
+  <script src="./js/NumberModel.js"></script>
+  <script src="./js/ElementObserver.js"></script>
+  <script src="./js/ConsoleObserver.js"></script>
+  <script src="./js/HistoryObserver.js"></script>
+  <script>
+    let model = new NumberModel();
+    let elementObserver = new ElementObserver('elementSquare');
+    let consoleObserver = new ConsoleObserver();
+    let historyObserver = new HistoryObserver();
+
+    model.addObserver(elementObserver);
+    model.addObserver(consoleObserver);
+    model.addObserver(historyObserver);
+
+
+    model.notifyObservers();
+
+
+  </script>
+</body>
+</html>
